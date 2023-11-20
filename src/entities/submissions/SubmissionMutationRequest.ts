@@ -5,7 +5,7 @@ export class SubmissionMutationRequest {
   @Field(() => String)
   questionId: string;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   answer: string;
 
   @Field(() => Number, { nullable: true })

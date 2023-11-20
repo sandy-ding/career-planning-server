@@ -6,8 +6,8 @@ export class Answer {
   @Field()
   questionId: string;
 
-  @Field()
-  answer: string;
+  @Field({ nullable: true })
+  answer?: string;
 
   @Field({ nullable: true })
   isCorrect?: boolean;

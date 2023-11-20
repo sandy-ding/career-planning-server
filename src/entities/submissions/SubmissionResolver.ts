@@ -23,7 +23,6 @@ export class SubmissionResolver {
       isCorrect: isCorrect || question?.answer === answer,
     };
 
-    console.log;
     let submission = await submissionModel.findById(userId);
     if (!submission) {
       submission = await submissionModel.create<Submission>({

@@ -38,7 +38,7 @@ export class Question {
   @Field(() => [Option], { nullable: true })
   options: Option[];
 
-  @Field()
+  @Field({ nullable: true })
   answer: string;
 
   @Field({ nullable: true })

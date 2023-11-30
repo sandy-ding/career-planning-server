@@ -5,7 +5,6 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { UserResolver } from "./entities/users/UserResolver";
 import { CardResolver } from "./entities/cards/CardResolver";
-import { QuestionResolver } from "./entities/questions/QuestionResolver";
 import { SubmissionResolver } from "./entities/submissions/SubmissionResolver";
 import { parseContextFromHeaders } from "./auth/parseContextFromHeaders";
 
@@ -14,12 +13,7 @@ const PORT = process.env.PORT || 4000;
 async function bootstrap() {
   dotenv.config();
   const schema = await buildSchema({
-    resolvers: [
-      UserResolver,
-      CardResolver,
-      QuestionResolver,
-      SubmissionResolver,
-    ],
+    resolvers: [UserResolver, CardResolver, SubmissionResolver],
     validate: { forbidUnknownValues: false },
   });
 

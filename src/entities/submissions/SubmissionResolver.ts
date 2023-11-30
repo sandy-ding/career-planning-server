@@ -3,7 +3,6 @@ import { Submission, Answer } from "./Submission";
 import submissionModel from "./SubmissionModel";
 import { SubmissionMutationRequest } from "./SubmissionMutationRequest";
 import { Types } from "mongoose";
-import questionModel from "../questions/QuestionModel";
 
 @Resolver(Submission)
 export class SubmissionResolver {
@@ -13,14 +12,12 @@ export class SubmissionResolver {
     @Arg("input")
     { questionId, answer, time, isCorrect }: SubmissionMutationRequest
   ): Promise<Answer> {
-    const question = await questionModel.findById(questionId);
-
     const data = {
       time,
       answer,
       questionId,
       numOfSubmission: 1,
-      isCorrect: isCorrect || question?.answer === answer,
+      isCorrect,
     };
 
     let submission = await submissionModel.findById(userId);

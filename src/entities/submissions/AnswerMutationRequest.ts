@@ -1,7 +1,7 @@
 import { Field, InputType } from "type-graphql";
 
 @InputType()
-export class SubmissionMutationRequest {
+export class AnswerMutationRequest {
   @Field(() => String)
   questionId: string;
 
@@ -9,7 +9,13 @@ export class SubmissionMutationRequest {
   answer: string;
 
   @Field(() => Number, { nullable: true })
-  time: number;
+  startTime: number;
+
+  @Field(() => Number, { nullable: true })
+  endTime: number;
+
+  @Field(() => Number, { nullable: true })
+  duration: number;
 
   @Field(() => Boolean, { nullable: true })
   isCorrect: boolean;

@@ -16,7 +16,13 @@ export class Answer {
   numOfSubmission?: number;
 
   @Field({ nullable: true })
-  time?: number;
+  startTime?: number;
+
+  @Field({ nullable: true })
+  endTime?: number;
+
+  @Field({ nullable: true })
+  duration?: number;
 }
 
 @ObjectType()

@@ -4,11 +4,16 @@ const submissionSchema = new Schema({
   _id: Types.ObjectId,
   answers: [
     {
-      questionId: String,
+      questionId: {
+        type: String,
+        required: true,
+      },
       answer: String,
+      startTime: Number,
+      endTime: Number,
+      duration: Number,
       isCorrect: Boolean,
       numOfSubmission: Number,
-      time: Number,
     },
   ],
 });

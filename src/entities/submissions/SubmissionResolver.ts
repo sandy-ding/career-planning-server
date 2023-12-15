@@ -56,6 +56,7 @@ export class SubmissionResolver {
         userId,
         {
           answers,
+          activeQuestionId: questionId,
         },
         { new: true }
       );

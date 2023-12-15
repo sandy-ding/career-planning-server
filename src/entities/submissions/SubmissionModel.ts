@@ -2,6 +2,7 @@ import { Schema, Types, model } from "mongoose";
 
 const submissionSchema = new Schema({
   _id: Types.ObjectId,
+  activeQuestionId: String,
   answers: [
     {
       questionId: {

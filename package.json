@@ -8,7 +8,8 @@
     "start": "nodemon ./src/index.ts",
     "ts-node": "ts-node",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "addCards": "npx ts-node-dev ./src/scripts/addCards.ts"
+    "addCards": "npx ts-node-dev ./src/scripts/addCards.ts",
+    "generateCSV": "npx ts-node-dev ./src/scripts/generateCSV.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
   "dependencies": {
     "apollo-server": "^3.12.0",
     "class-validator": "^0.14.0",
+    "csv-stringify": "^6.4.5",
     "graphql": "^15.8.0",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.2",

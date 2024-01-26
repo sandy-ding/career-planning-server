@@ -19,4 +19,7 @@ export class Card {
 
   @Field({ nullable: true })
   isRedeemed: boolean;
+
+  @Field({ nullable: true })
+  updatedAt: number;
 }

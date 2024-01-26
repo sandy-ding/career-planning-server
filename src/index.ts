@@ -3,9 +3,9 @@ import { ApolloServer } from "apollo-server";
 import { buildSchema } from "type-graphql";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { UserResolver } from "./entities/users/UserResolver";
 import { CardResolver } from "./entities/cards/CardResolver";
 import { SubmissionResolver } from "./entities/submissions/SubmissionResolver";
+import { ProfileResolver } from "./entities/profiles/ProfileResolver";
 import { parseContextFromHeaders } from "./auth/parseContextFromHeaders";
 
 const PORT = process.env.PORT || 4000;
@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 4000;
 async function bootstrap() {
   dotenv.config();
   const schema = await buildSchema({
-    resolvers: [UserResolver, CardResolver, SubmissionResolver],
+    resolvers: [CardResolver, SubmissionResolver, ProfileResolver],
     validate: { forbidUnknownValues: false },
   });
 

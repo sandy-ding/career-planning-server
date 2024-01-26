@@ -5,6 +5,7 @@ const cardSchema = new Schema({
   code: String,
   key: String,
   isRedeemed: Boolean,
+  udpatedAt: Number,
 });
 
 const Card = model("Card", cardSchema);

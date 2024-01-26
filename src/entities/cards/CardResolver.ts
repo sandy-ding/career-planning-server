@@ -31,9 +31,11 @@ export class CardResolver {
     const card = await cardModel.findOne({ code, key });
 
     if (!card.isRedeemed) {
-      await cardModel.findOneAndUpdate({ code, key }, { isRedeemed: true });
+      await cardModel.findOneAndUpdate(
+        { code, key },
+        { isRedeemed: true, updatedAt: Date.now() }
+      );
     }
-    console.log({ card });
     const accessToken = this.generateAccessToken({ userId: card._id });
     return { accessToken };
   }

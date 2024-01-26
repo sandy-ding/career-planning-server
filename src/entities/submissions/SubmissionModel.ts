@@ -1,8 +1,10 @@
-import { Schema, Types, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const submissionSchema = new Schema({
-  _id: Types.ObjectId,
+  _id: Schema.Types.ObjectId,
   activeQuestionId: String,
+  createdOn: Number,
+  updatedAt: Number,
   answers: [
     {
       questionId: {

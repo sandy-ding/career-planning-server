@@ -30,6 +30,15 @@ export class Submission {
   @Field(() => ID)
   _id: Types.ObjectId;
 
-  @Field(() => [Answer])
-  answers: Answer[];
+  @Field(() => String, { nullable: true })
+  activeQuestionId?: string;
+
+  @Field(() => Number, { nullable: true })
+  createdOn?: number;
+
+  @Field(() => Number, { nullable: true })
+  updatedAt?: number;
+
+  @Field(() => [Answer], { nullable: true })
+  answers?: Answer[];
 }

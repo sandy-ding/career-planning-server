@@ -1,4 +1,4 @@
-import { Resolver, Arg, Mutation, Ctx, Query } from "type-graphql";
+import { Resolver, Arg, Mutation, Ctx, Query, Int } from "type-graphql";
 import { Submission, Answer } from "./Submission";
 import submissionModel from "./SubmissionModel";
 import { AnswerMutationRequest } from "./AnswerMutationRequest";
@@ -26,6 +26,24 @@ export class SubmissionResolver {
     );
   }
 
+  @Query(() => [Submission], { nullable: true })
+  public async submissions(
+    @Arg("cursor", { nullable: true }) cursor?: string,
+    @Arg("limit", (type) => Int, { nullable: true }) limit: number = 20
+  ): Promise<Submission[]> {
+    let submissions = await submissionModel
+      .find({
+        ...(cursor && {
+          _id: { $lt: cursor },
+        }),
+      })
+      .sort({
+        _id: -1,
+      })
+      .limit(limit);
+    return submissions;
+  }
+
   @Mutation(() => Answer)
   public async submitAnswer(
     @Ctx("userId") userId: string,
@@ -38,6 +56,8 @@ export class SubmissionResolver {
       submission = await submissionModel.create<Submission>({
         _id: new Types.ObjectId(userId),
         answers: [input],
+        createdOn: Date.now(),
+        updatedAt: Date.now(),
       });
     } else {
       const { answers } = submission;
@@ -57,6 +77,7 @@ export class SubmissionResolver {
         {
           answers,
           activeQuestionId: questionId,
+          updatedAt: Date.now(),
         },
         { new: true }
       );

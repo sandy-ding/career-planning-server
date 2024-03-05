@@ -30,6 +30,10 @@ export class CardResolver {
   ): Promise<Token> {
     const card = await cardModel.findOne({ code, key });
 
+    if (!card) {
+      throw Error("Invalid code or key");
+    }
+
     if (!card.isRedeemed) {
       await cardModel.findOneAndUpdate(
         { code, key },
